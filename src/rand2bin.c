@@ -12,6 +12,15 @@ void display_number(int number, int x, int y, GContext *ctx) {
                        decimal_box, GTextOverflowModeWordWrap, GTextAlignmentCenter, NULL);
 }
 
+void display_bit(int bit, int x, int y, GContext *ctx) {
+ 	GRect bit_box = (GRect){ .origin = {.x = x, .y = y}, .size = {.w = 8, .h = 30}};
+	char bit_string[2];
+	snprintf(bit_string, 2, "%d", bit);
+    	graphics_draw_text(ctx, bit_string, 
+                       fonts_get_system_font(FONT_KEY_GOTHIC_18), 
+                       bit_box, GTextOverflowModeWordWrap, GTextAlignmentCenter, NULL);
+}
+
 void update_display(struct Layer *layer, GContext *ctx)	{
 	graphics_context_set_text_color(ctx, GColorBlack);
 
